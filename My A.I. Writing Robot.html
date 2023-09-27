@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #0095dd; /* link */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+a:visited {
+  color: #d33bf0;
+}
+a:link, a:link:hover, a:link:active, a:link * {
+  color: #0095dd;
+}
+a:link {
+  text-decoration: none;
+  font-weight: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>My A.I. Writing Robot</title><title>My A.I. Writing Robot :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="sepia" data-font="sans-serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://www.newyorker.com/culture/infinite-scroll/my-ai-writing-robot">
+    <span>www.newyorker.com</span>
+    <span>/culture/infinite-scroll/my-ai-writing-robot</span>
+  </a>
+  <h1 dir="auto" id="reader-title">My A.I. Writing Robot</h1>
+  <span dir="auto" id="reader-credits">Kyle Chayka</span>
+  <span dir="auto" id="reader-estimated-time">9-12 minutes</span>
+  <span dir="auto" id="published-time">7/11/2023</span>
+  <hr>
+  <div id="readability-page-1" class="page"><div data-journey-hook="client-content" data-testid="BodyWrapper"><p xt-marked="ok">In May, I was confronted with a robot version of my writer self. It was made, at my request, by a Silicon Valley startup called Writer, which specializes in building artificial-intelligence tools that produce content in the voice of a particular brand or institution. In my case, it was meant to replicate my personal writing voice. Whereas a model like OpenAI’s <a href="https://www.newyorker.com/science/annals-of-artificial-intelligence/what-kind-of-mind-does-chatgpt-have" data-uri="11d3925aae1c43c7c329b8e7c61e22b9" xt-marked="ok">ChatGPT</a> is “trained” on millions of words from across the Internet, Robot Kyle runs on Writer’s bespoke model with an extra layer of training, based on some hundred and fifty thousand words of my writing alone. Writer’s pitch is that I, Human Kyle, can use Robot Kyle to generate text in a style that sounds like mine, at a speed that I could only dream of. Writer’s co-founder and chief technology officer, Waseem Alshikh, recently told me that the company’s goal is to use A.I. to “scale content and scale language.” For more than a month now, I have been experimenting with my literary automaton to see how well it accomplishes this task. Or, as Robot Kyle put it when I asked him to comment on the possibility of replacing me: “How could a machine generate the insights, observations, and unique perspectives that I provide as a human?”</p><p xt-marked="ok">Writer is one of several new startups that are attempting to apply emerging A.I. technology to the onerous task of writing. Like many technological innovations, writing robots are meant to create efficiency, particularly for businesses that have to produce large amounts of iterative text. Writer has relationships with companies such as the consulting firm Accenture, the technology company Intuit, and the lingerie brand Victoria’s Secret; commissions for customized models run in the seven figures. (Mine was created as an experiment, free of charge, without some of the intensive features that a corporation’s version would include.) With the help of Writer’s tools, the company hopes, a smaller number of human writers assisted by machines will accomplish the work of many, cutting down costs and increasing productivity in the composition of everything from product descriptions and tweets to C.E.O. messages, investors’ memos, and blog-post headlines. In a March report, Goldman Sachs concluded that three hundred million full-time jobs worldwide are vulnerable to this form of A.I. automation, the majority of them desk jobs. Alshikh speaks of the service as a kind of assembly line for language. “We had the Industrial Revolution; now we have this,” he said.</p><p xt-marked="ok">The looming presence of my personal A.I. model has indeed left me feeling a bit like an artisanal carpenter facing down a factory-floor buzz saw. Should I embrace being replaced and proactively automate my own job before someone else does? Could Robot Kyle help me write better, cleaner, faster? It seemed to think so. When I asked it to describe the long-term effects of machine-generated writing, Robot Kyle wrote, “Writers should not fear AI, but rather embrace it as a tool that can facilitate their craft, driving creativity and innovation instead of replacing it.” What, exactly, does Writer mean by the label “writer”? Our digitized world runs on filler text: avalanches of words and phrases written to optimize Web sites for search engines, to use as tags on social-media posts, and to employ in marketing newsletters that spam in-boxes. May Habib, the C.E.O. and the other co-founder of Writer, told me that the platform’s tools will automate the writing of “summaries, metadata, ads, distribution copy—all the stuff you spend time doing.” Victoria’s Secret, for instance, is using Writer to automate product copy for its underwear and swimsuits, but Writer promises something more sophisticated than mass-produced marketplace listings or formulaic e-mail blasts. Its core product, as Habib put it, is “automated insight extraction”—another way of describing the task of thinking, which is arguably the purpose of writing in the first place. As Joan Didion wrote, in 1976, “I write entirely to find out what I’m thinking.” A.I. programs such as Writer aim to supplant that process.</p><p xt-marked="ok">In 1984, Steve Jobs famously described the computer as a “bicycle for the mind.” The experience of using Writer is something like riding an electric bike: step on the pedal and you’ll go much faster than the gears of the unassisted human mind could. The program’s interface features a prompt window on the left and a text box on the right. With a one-sentence prompt—let’s call it the seed of a thought—Writer can produce paragraphs of text in an instant. If you want more on the same subject, simply press the Command and Return keys simultaneously and another few sentences appear. Yet, as with any large language model, Writer cannot guarantee that the results will be factual or sensical. Writing without the aid of a generative machine might be frustrating, even excruciating, but it does encourage productive logic. If writing is thinking, ordering one’s ideas, generating text with A.I. may be a way to avoid thinking. What is writing without thinking? Maybe it is the definition of that deadening euphemism: content. As I tried to incorporate Writer into my writing process, I felt a little like a gambler pulling a slot-machine lever over and over, in hope of finding the lucky combination of phrases that communicated something like what I wanted to say. At one point, I asked Robot Kyle to write the beginning of this article. It came up with this:</p><blockquote data-event-boundary="click" data-event-click="{&quot;pattern&quot;:&quot;BlockquoteEmbed&quot;}" data-in-view="{&quot;pattern&quot;:&quot;BlockquoteEmbed&quot;}" data-include-experiments="true"><p xt-marked="ok">For centuries, humans have looked to technology to automate mundane
+tasks and free up time for creativity and leisure. But with the
+emergence of artificial intelligence and generative text tools,
+automation is encroaching on the jobs of writers and journalists.</p></blockquote><p xt-marked="ok">This draft sounded like an undergrad term paper, but with the kernel of an intriguing argument: technology promises leisure but often fails to deliver it. I edited the prompt to request a new lead with a more exciting, literary tone that captures the emotional experience of encountering oneself in robot form. This time, the A.I. concocted a sci-fi narrative:</p><blockquote data-event-boundary="click" data-event-click="{&quot;pattern&quot;:&quot;BlockquoteEmbed&quot;}" data-in-view="{&quot;pattern&quot;:&quot;BlockquoteEmbed&quot;}" data-include-experiments="true"><p xt-marked="ok">I stood in the lobby of the Silicon Valley tech lab of Robodot,
+watching a shiny, humanoid robot shuffle towards me. It was roughly
+the same height as me, with a sleek metal covering and glowing blue
+eyes. In that moment, I was overwhelmed with a deep sense of dread:
+The robot had been created to replace me.</p></blockquote><p xt-marked="ok">Of course, Robodot is not a real company, and Robot Kyle is enclosed in a Web browser like a genie in its bottle, not wandering about like a literary R2-D2. The sense of dread isn’t far off, though. You can ask ChatGPT to mimic a particular writer’s voice, but it rarely gets close. Writer, by comparison, can be unnervingly effective. At times Robot Kyle seemed to be reflecting fragments of my mind back at me, mimicking some of the semi-subconscious tics that constitute my writing. It wrote, for instance, that generative A.I. “asks whether the meaning of language is still rooted in the human experience, or whether it is a commodity to be mined and manipulated, a tool to be used in whatever way the artificers of this new technology choose.” In this sentence, I find several embarrassing hallmarks of my writing. First, there is the preponderance of commas, with sentences segmented into many clauses, a habit I partially blame on <em xt-marked="ok">The New Yorker’s</em> style. Then, there is my personal penchant for setting up dialectical contrasts: “rooted in the human experience” versus “commodity to be mined.” (A book editor of mine once forced me to weed out some of the many “rather”s in my draft manuscript.) Finally, there is my tendency to end a sentence by echoing the final thought in different words: “a commodity&nbsp;.&nbsp;.&nbsp;. a tool.” The generative text evokes a feeling in me not unlike the revulsion of hearing one’s own speaking voice in a recording. Do I really sound like that? The robot has made me acutely self-conscious. I recognize my A.I. doppelgänger, and I don’t like it.</p><p xt-marked="ok">As far as “insight extraction” goes, though, Robot Kyle is less successful. Most “insights” that the program produced felt hollow or approximated. Reading the generated sentence above, my (human) editor might point out that something “rooted in the human experience” can still be “a commodity,” and that the noun “artificer” is unnecessarily grandiose. Unless I told Robot Kyle not to cite anyone, the program would fabricate source quotes, like commentary from a nonexistent “Dr. John Smith, a leading AI researcher at Harvard University.” Most vexing, the program fell back frequently on cliché—“in the end,” “remains in flux,” “the long term implications&nbsp;.&nbsp;.&nbsp;. are still unknown.” No matter how many times I asked it to describe how I felt about being replaced, Robot Kyle always came to the conclusion that I would ultimately be happier as a result of my A.I. self. The program’s output reminded me of the fragility of language and original thought. As writers, we are all prone to falling into lazy patterns; avoiding them requires active effort. Robot Kyle is no different.</p><p xt-marked="ok">Even though plagued by factual errors and banalities, and limited to niche clientele, tools like Writer force us to consider how A.I. might permanently change our relationship to the written word. It’s not hard to imagine a future in which every white-collar worker is equipped with such writing robots, the way a generation of secretaries a century ago used typewriters for the first time. In a world where text is produced freely and instantly, but is not necessarily accurate or intelligible, human workers would be pushed into the role of high-volume editors and quality-assurance inspectors, cajoling a sometimes recalcitrant automatic laborer. At times Robot Kyle felt like an extremely enthusiastic and productive, but rarely on-target, personal intern.</p></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
